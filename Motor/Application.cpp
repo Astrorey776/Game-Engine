@@ -17,10 +17,8 @@ Application::Application()
 	AddModule(camera);
 	AddModule(input);
 	AddModule(audio);
-
 	
 	// Scenes
-
 
 	// Renderer last!
 	AddModule(renderer3D);
