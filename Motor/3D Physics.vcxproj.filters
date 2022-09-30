@@ -22,6 +22,9 @@
     <Filter Include="Sources\Glew">
       <UniqueIdentifier>{39d3efbf-8338-48e8-b5f6-216e24f45c3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\ImGui-1.78">
+      <UniqueIdentifier>{23e6ef24-42be-4199-95ff-e396336d62ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -264,6 +267,24 @@
     <ClInclude Include="Glew\include\wglew.h">
       <Filter>Sources\Glew</Filter>
     </ClInclude>
+    <ClInclude Include="imgui-1.78\imconfig.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-1.78\imgui.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-1.78\imgui_internal.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-1.78\imstb_rectpack.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-1.78\imstb_textedit.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-1.78\imstb_truetype.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -400,6 +421,18 @@
     </ClCompile>
     <ClCompile Include="MathGeoLib\include\Time\Clock.cpp">
       <Filter>Sources\MathGeoLib</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-1.78\imgui.cpp">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-1.78\imgui_demo.cpp">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-1.78\imgui_draw.cpp">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-1.78\imgui_widgets.cpp">
+      <Filter>Sources\ImGui-1.78</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
