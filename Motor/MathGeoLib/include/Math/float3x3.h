@@ -32,7 +32,6 @@
 #endif
 
 #ifdef MATH_BULLET_INTEROP
-#include "../../../Bullet/include/LinearMath/btMatrix3x3.h"
 #endif
 
 MATH_BEGIN_NAMESPACE
@@ -672,8 +671,6 @@ public:
 #endif
 
 #ifdef MATH_BULLET_INTEROP
-	float3x3(const btMatrix3x3 &m) { Set(m[0][0], m[0][1], m[0][2], m[1][0], m[1][1], m[1][2], m[2][0], m[2][1], m[2][2]); }
-	operator btMatrix3x3() const { return btMatrix3x3(v[0][0], v[0][1], v[0][2], v[1][0], v[1][1], v[1][2], v[2][0], v[2][1], v[2][2]); }
 #endif
 
 #ifdef MATH_QT_INTEROP
@@ -689,8 +686,6 @@ std::ostream &operator <<(std::ostream &out, const float3x3 &rhs);
 #endif
 
 /// Multiplies two transforms together.
-float3x3 operator *(const Quat &lhs, const float3x3 &rhs);
-
 /// Transforms the given vector by the given matrix in the order v * M. Note that this form
 /// of multiplication is against the convention of this math system for transforming geometrical objects.
 /// Please use the M * v notation instead. (Remember that M * v != v * M in general).
