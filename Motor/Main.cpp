@@ -5,7 +5,7 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
-#pragma comment (lib, "glew32.lib")
+//#pragma comment (lib, "glew32.lib")
 
 enum main_states
 {
