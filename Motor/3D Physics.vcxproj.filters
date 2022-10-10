@@ -285,6 +285,12 @@
     <ClInclude Include="imgui-1.78\imstb_truetype.h">
       <Filter>Sources\ImGui-1.78</Filter>
     </ClInclude>
+    <ClInclude Include="imgui-1.78\imgui_impl_opengl3.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui-1.78\imgui_impl_sdl.h">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -432,6 +438,12 @@
       <Filter>Sources\ImGui-1.78</Filter>
     </ClCompile>
     <ClCompile Include="imgui-1.78\imgui_widgets.cpp">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-1.78\imgui_impl_opengl3.cpp">
+      <Filter>Sources\ImGui-1.78</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui-1.78\imgui_impl_sdl.cpp">
       <Filter>Sources\ImGui-1.78</Filter>
     </ClCompile>
   </ItemGroup>
