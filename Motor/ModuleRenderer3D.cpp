@@ -5,10 +5,6 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
-#include "imgui.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_impl_sdl.h"
-
 #pragma comment (lib, "glu32.lib")    /* link OpenGL Utility lib     */
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 
@@ -103,24 +99,6 @@ bool ModuleRenderer3D::Init()
 	// Projection matrix for
 	OnResize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-
-	const char* glsl_version = "#version 130";
-
-
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-
-	ImGui::StyleColorsDark();
-
-
-
-
-	ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
-	ImGui_ImplOpenGL3_Init(glsl_version);
-
-
-
 	return ret;
 }
 
@@ -138,13 +116,6 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 
 	for(uint i = 0; i < MAX_LIGHTS; ++i)
 		lights[i].Render();
-
-
-	//IMGUI
-	ImGui_ImplSDL2_NewFrame(App->window->window);
-	ImGui_ImplOpenGL3_NewFrame();
-
-	ImGui::NewFrame();
 
 	return UPDATE_CONTINUE;
 }
