@@ -22,8 +22,8 @@
     <Filter Include="Sources\Glew">
       <UniqueIdentifier>{39d3efbf-8338-48e8-b5f6-216e24f45c3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\ImGui-1.78">
-      <UniqueIdentifier>{23e6ef24-42be-4199-95ff-e396336d62ed}</UniqueIdentifier>
+    <Filter Include="Sources\ImGui">
+      <UniqueIdentifier>{37819d11-c172-48c8-8f96-8d90651de70f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -267,29 +267,32 @@
     <ClInclude Include="Glew\include\wglew.h">
       <Filter>Sources\Glew</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imconfig.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imgui.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imgui_internal.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imgui_impl_opengl3.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imstb_rectpack.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imgui_impl_opengl3_loader.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imstb_textedit.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imgui_impl_sdl.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imstb_truetype.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imgui_impl_opengl3.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui-1.78\imgui_impl_sdl.h">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>Sources\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>Sources\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -428,23 +431,26 @@
     <ClCompile Include="MathGeoLib\include\Time\Clock.cpp">
       <Filter>Sources\MathGeoLib</Filter>
     </ClCompile>
-    <ClCompile Include="imgui-1.78\imgui.cpp">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui-1.78\imgui_demo.cpp">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui-1.78\imgui_draw.cpp">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui-1.78\imgui_widgets.cpp">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClCompile Include="ImGui\imgui_impl_opengl3.cpp">
+      <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui-1.78\imgui_impl_opengl3.cpp">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClCompile Include="ImGui\imgui_impl_sdl.cpp">
+      <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui-1.78\imgui_impl_sdl.cpp">
-      <Filter>Sources\ImGui-1.78</Filter>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>Sources\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>Sources\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
