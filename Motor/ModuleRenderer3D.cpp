@@ -144,13 +144,66 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
+	
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
 
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-	ImGui::ShowDemoWindow();
+	//ImGui::ShowDemoWindow();
+	ImGui::Begin("Main Scene", 0, ImGuiWindowFlags_MenuBar);
+
+
+	ImGui::BeginMenuBar();
+	//ImGui::SameLine(0, -50);
+	ImGui::Separator();
+
+	if (ImGui::BeginMainMenuBar()) {
+
+		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.05f, 0.05f, 0.05f, 1));
+
+		ImGui::PushStyleColor(ImGuiCol_PopupBg, ImVec4(0.95f, 0.95f, 0.95f, 1));
+
+		if (ImGui::BeginMenu("File"))
+		{
+
+			if (ImGui::MenuItem("GitHub"))
+			{
+				ShellExecute(0, 0, "https://github.com/Astrorey776/Game-Engine", 0, 0, SW_SHOW);
+			}
+
+			if (ImGui::MenuItem("Exit"))
+			{
+				//Boton stop
+			}
+
+			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Windows"))
+		{
+			/*for (int i = 0; i < (uint)ImWindowID::MAX; i++)
+			{
+				if (ImGui::MenuItem(imWindows[i]->windowName.c_str())) imWindows[i]->isEnabled = true;
+			}*/
+			ImGui::EndMenu();
+		}
+
+		ImGui::PopStyleColor(2);
+
+		ImGui::EndMainMenuBar();
+
+	}
+
+	ImGui::EndMenuBar();
+	ImGui::BeginChild("", ImVec2(SCREEN_WIDTH, SCREEN_HEIGHT));
+
+	ImVec2 wsize = ImGui::GetWindowSize();
+
+
+	ImGui::EndChild();
+	ImGui::End();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
