@@ -107,7 +107,7 @@ bool ModuleRenderer3D::Init()
 
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
+
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
@@ -176,6 +176,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 			if (ImGui::MenuItem("Exit"))
 			{
 				//Boton stop
+				return UPDATE_STOP;
 			}
 
 			ImGui::EndMenu();
