@@ -20,6 +20,7 @@ public:
 	void OnResize(int width, int height);
 
 public:
+	uint textureColorbuffer;
 
 	Light lights[MAX_LIGHTS];
 	SDL_GLContext context;

@@ -113,6 +113,7 @@ bool ModuleRenderer3D::Init()
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	// Setup Dear ImGui style
 	ImGui::StyleColorsDark();
 	//ImGui::StyleColorsClassic();
@@ -150,12 +151,13 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
+	ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-	//ImGui::ShowDemoWindow();
+	ImGui::ShowDemoWindow();
 	ImGui::Begin("Main Scene", 0, ImGuiWindowFlags_MenuBar);
 
-
+	
 	ImGui::BeginMenuBar();
 	//ImGui::SameLine(0, -50);
 	ImGui::Separator();
@@ -198,10 +200,12 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	}
 
+	
+
 	ImGui::EndMenuBar();
 	ImGui::BeginChild("", ImVec2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
-	ImVec2 wsize = ImGui::GetWindowSize();
+	
 
 
 	ImGui::EndChild();
