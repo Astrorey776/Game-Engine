@@ -151,12 +151,21 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
-	ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+
+	
+	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 	ImGui::ShowDemoWindow();
 	ImGui::Begin("Main Scene", 0, ImGuiWindowFlags_MenuBar);
+	ImGui::BeginChild("", ImVec2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
+	ImVec2 wsize = ImGui::GetWindowSize();
+
+	ImGui::Image((ImTextureID)App->renderer3D->textColorBuff, wsize, ImVec2(0, 1), ImVec2(1, 0));
+
+	ImGui::EndChild();
+	ImGui::End();
 	
 	ImGui::BeginMenuBar();
 	//ImGui::SameLine(0, -50);
@@ -202,14 +211,11 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	
 
-	ImGui::EndMenuBar();
-	ImGui::BeginChild("", ImVec2(SCREEN_WIDTH, SCREEN_HEIGHT));
-
+	/*ImGui::EndMenuBar();
+	ImGui::BeginChild("", ImVec2(SCREEN_WIDTH, SCREEN_HEIGHT));ImGui::EndChild();*/
+	
 	
 
-
-	ImGui::EndChild();
-	ImGui::End();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
