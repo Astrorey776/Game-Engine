@@ -115,8 +115,12 @@ bool ModuleRenderer3D::Init()
 
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	// Setup Dear ImGui style
-	ImGui::StyleColorsDark();
-	//ImGui::StyleColorsClassic();
+	
+		//ImGui::StyleColorsDark();
+		//ImGui::StyleColorsClassic();
+		ImGui::StyleColorsLight();
+	
+	
 
 	// Setup Platform/Renderer backends
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
@@ -220,6 +224,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 					docking = true;
 
 				}
+
 
 			    //Info about the engine
 				ImGui::Text("License:");
