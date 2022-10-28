@@ -229,6 +229,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 				ImGui::Text("Info about the Engine");
 				ImGui::Text("");
 				ImGui::Text("-Code on fbx drag & drop implemented but not functional.");
+				ImGui::Text("-Configuration window");
 				ImGui::Text("-Buttons to open github repository and close the program.");
 				ImGui::Text("-Button to enable docking.");
 				ImGui::EndMenu();
@@ -238,6 +239,307 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 			if (pOpen_about == NULL) aboutVisible = !aboutVisible; // Window is closed so function "MenuAbout()" stops being called
 		}
 		
+		if (pOpen_config)
+		{
+			if (ImGui::Begin("Configuration", &pOpen_config))
+			{
+				//ImGui::SetWindowSize(ImVec2(450.0f, 300.0f));
+				ImGui::TextColored(ImVec4(255,255, 255, 255), "OPTIONS");
+
+				if (ImGui::CollapsingHeader("Window"))
+				{
+					if (ImGui::Checkbox("FullScreen", &fullscreen))
+					{
+						if (fullscreen)
+						{
+							SDL_SetWindowSize(App->window->window, 1920, 1080);
+							SDL_SetWindowFullscreen(App->window->window, SDL_WINDOW_FULLSCREEN); //FULLSCREEN ENABLED
+							
+
+						}
+						else
+						{
+							SDL_SetWindowSize(App->window->window, SCREEN_WIDTH, SCREEN_HEIGHT);
+							SDL_SetWindowFullscreen(App->window->window, !SDL_WINDOW_FULLSCREEN); //FULLSCREEN DISABLED
+							
+
+						}
+					}
+					if (!fullscreen) //RESIZABLE, BORDER AND SIZE OPTIONS ONLY APPEARS IF IT IS IN WINDOW MODE
+					{
+						if (ImGui::Checkbox("Resizable", &resizable))
+						{
+							if (resizable)
+							{
+								SDL_SetWindowResizable(App->window->window, SDL_TRUE); //RESIZABLE ENABLED
+								
+
+							}
+							else
+							{
+								SDL_SetWindowResizable(App->window->window, SDL_FALSE);//RESIZABLE DISABLED
+								
+
+							}
+						}
+						ImGui::SameLine();
+						if (ImGui::Checkbox("Borderless", &borderless))
+						{
+							if (borderless)
+							{
+								SDL_SetWindowBordered(App->window->window, SDL_FALSE); //BORDERLESS ENABLED
+								
+
+							}
+							else
+							{
+								SDL_SetWindowBordered(App->window->window, SDL_TRUE); //BORDERLESS DISABLED
+								
+
+							}
+						}
+
+						ImGui::Text("Width: ");
+						ImGui::SameLine();
+						ImGui::TextColored({ 0,255,0,255 }, "%d", SDL_GetWindowSurface(App->window->window)->w);
+
+						ImGui::Text("Height: ");
+						ImGui::SameLine();
+						ImGui::TextColored({ 0,255,0,255 }, "%d", SDL_GetWindowSurface(App->window->window)->h);
+
+					}
+				}
+				if (ImGui::CollapsingHeader("Visual"))
+				{
+					if (ImGui::Checkbox("Vsync", &vsync))
+					{
+						if (vsync)
+						{
+							SDL_GL_SetSwapInterval(1); //VSYNC ENABLED
+							
+
+						}
+						else
+						{
+							SDL_GL_SetSwapInterval(0); //VSYNC DISABLED
+							
+
+						}
+					}
+
+					if (ImGui::SliderFloat("Brightness", &screenBrightness, 0.300f, 1.000f))
+					{
+						SDL_SetWindowBrightness(App->window->window, screenBrightness);
+						
+
+					}
+
+					if (ImGui::Checkbox("Lights", &light))
+					{
+
+						if (light)
+						{
+							glEnable(GL_LIGHTING); //LIGHTS ENABLED
+							
+
+						}
+						else
+						{
+							glDisable(GL_LIGHTING); //LIGHTS DISABLED
+							
+						}
+
+					}
+					ImGui::SameLine();
+					if (ImGui::Checkbox("Depth Test", &depthTest))
+					{
+						if (depthTest)
+						{
+							glEnable(GL_DEPTH_TEST); //DEPTH TEST ENABLED
+							
+
+						}
+						else
+						{
+							glDisable(GL_DEPTH_TEST); //DEPTH TEST DISABLED
+							
+
+						}
+					}
+					if (ImGui::Checkbox("Cull Face", &cullFace))
+					{
+						if (cullFace)
+						{
+							glEnable(GL_CULL_FACE); //CULL FACE ENABLED
+							
+						}
+						else
+						{
+							glDisable(GL_CULL_FACE); //CULL FACE  DISABLED
+							
+
+						}
+					}
+					ImGui::SameLine();
+					if (ImGui::Checkbox("Color Material", &colorMaterial))
+					{
+						if (colorMaterial)
+						{
+							glEnable(GL_COLOR_MATERIAL); //COLOR MATERIAL ENABLED
+							
+
+						}
+						else
+						{
+							glDisable(GL_COLOR_MATERIAL); //COLOR MATERIAL  DISABLED
+							
+
+						}
+					}
+					ImGui::SameLine();
+		
+
+				}
+				if (ImGui::CollapsingHeader("Hardware"))
+				{
+
+					ImGui::Text("-----");
+
+					//SDL Version
+					SDL_version version;
+					SDL_GetVersion(&version);
+
+					ImGui::Text("SDL Version:");
+					ImGui::SameLine();
+					ImGui::TextColored({ 255,255,0,20 }, "%u.%u.%u", version.major, version.minor, version.patch);
+
+					ImGui::Text("-----");
+
+					//CPU
+
+					//Cache
+
+					int SDL_GetCPUCount(void); //Aquest retorna el numero de nuclis del cpu.
+					int SDL_GetCPUCacheLineSize(void); //Aquest retorna el tamany de la primera linea de cache de la CPU
+
+
+					ImGui::Text("CPUs:");
+					ImGui::SameLine();
+					ImGui::TextColored({ 255,255,0,20 }, "%d", SDL_GetCPUCount());
+
+					//Ram del sistema
+					int SDL_GetSystemRAM(void); //Aquesta retorna la cantitat de ram de la que disposem
+
+					ImGui::Text("System RAM:");
+					ImGui::SameLine();
+					ImGui::TextColored({ 255,255,0,20 }, "%dGb", SDL_GetSystemRAM() / 1000);
+
+					//Caps--------------------------------
+					ImGui::Text("Caps:");
+
+					//Initiation of parameters
+
+					SDL_bool SDL_Has3DNow(void);
+					SDL_bool SDL_HasAltiVec(void);
+					SDL_bool SDL_HasAVX(void);
+					SDL_bool SDL_HasAVX2(void);
+					SDL_bool SDL_HasMMX(void);
+					SDL_bool SDL_HasRDTSC(void);
+					SDL_bool SDL_HasSSE(void);
+					SDL_bool SDL_HasSSE2(void);
+					SDL_bool SDL_HasSSE3(void);
+					SDL_bool SDL_HasSSE41(void);
+					SDL_bool SDL_HasSSE42(void);
+
+					//3dNow
+
+
+					if (SDL_Has3DNow())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "3DNow!");
+					}
+
+					//AltiVec
+
+					if (SDL_HasAltiVec())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "AltiVec");
+					}
+
+
+					//AVX
+					if (SDL_HasAVX())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "AVX");
+					}
+
+					//AVX2
+					if (SDL_HasAVX2())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "AVX2");
+					}
+					//MMX
+					if (SDL_HasMMX())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "MMX");
+					}
+					//RDTSC
+					if (SDL_HasRDTSC())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "RDTSC");
+					}
+					//SSE
+					if (SDL_HasSSE())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "SSE");
+					}
+					//SSE2
+					if (SDL_HasSSE2())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "SSE2");
+					}
+					//SSE3
+					if (SDL_HasSSE3())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "SSE3");
+					}
+					//SSE41
+					if (SDL_HasSSE41())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "SSE41");
+					}
+					//SSE42
+					if (SDL_HasSSE42())
+					{
+						ImGui::SameLine();
+						ImGui::TextColored({ 255,255,0,20 }, "SSE42");
+					}
+
+					ImGui::Text("-----");
+
+					//GPU
+					const char* SDL_GetCurrentVideoDriver(void);
+					ImGui::Text("Brand:");
+					ImGui::SameLine();
+					ImGui::TextColored({ 255,255,0,20 }, "%s", SDL_GetCurrentVideoDriver());
+
+				}
+			}
+
+			ImGui::End();
+
+			if (pOpen_config == NULL) configVisible = !configVisible; // Window is closed so function "MenuConfig()" stops being called
+		}
 		ImGui::PopStyleColor(2);
 
 		ImGui::EndMainMenuBar();

@@ -27,7 +27,9 @@ public:
 	mat3x3 NormalMatrix;
 	mat4x4 ModelMatrix, ViewMatrix, ProjectionMatrix;
 
-	bool pOpen_about = true;
+	bool pOpen_config = true,
+		pOpen_about = true;
+		
 
 	uint framebuffer = 0;
 	uint rbo;
@@ -35,6 +37,29 @@ public:
 
 	bool docking = false;
 
+	bool vsync = VSYNC;
+
 private:
+
+	//Configuration window
+	// 
+//window
+	bool fullscreen = WIN_FULLSCREEN;
+	bool resizable = WIN_RESIZABLE;
+	bool borderless = WIN_BORDERLESS;
+	bool fullDesk = WIN_FULLSCREEN_DESKTOP;
+	int screenWidth = SCREEN_WIDTH;
+	int screenHeight = SCREEN_HEIGHT;
+
+	//Screen
+	float screenBrightness = 1;
+	bool light = true;
+	bool depthTest = true;
+	bool cullFace = true;
+	bool colorMaterial = true;
+
+
+	bool configVisible = true;
 	bool aboutVisible = false;
+
 };
