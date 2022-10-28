@@ -7,7 +7,6 @@
 #include "ImGui/imgui_impl_sdl.h"
 #include "glew.h"
 
-
 bool show_demo_window = true;
 bool show_another_window = false;
 ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
@@ -60,6 +59,7 @@ update_status ModuleCamera3D::Update(float dt)
 	p.axis = true;
 	p.Render();
 
+	
 
 	//Camera configuration
 	vec3 newPos(0,0,0);
@@ -118,10 +118,13 @@ update_status ModuleCamera3D::Update(float dt)
 	}
 
 
+	//App->Massets->Render();
+
+	//FrameBuffer
+	//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	// Recalculate matrix -------------
 	CalculateViewMatrix();
-
 	return UPDATE_CONTINUE;
 }
 

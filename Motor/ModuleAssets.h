@@ -61,6 +61,9 @@ public:
 	// ------------------------------------ Draw
 	void Render();
 
+	bool wireframe = false;
+	bool textureEnabled = true;
+
 private:
 	SDL_Event event;                        // Declare event handle
 	char* dropped_filedir = "";                  // Pointer for directory of dropped file

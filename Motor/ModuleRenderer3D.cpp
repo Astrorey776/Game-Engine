@@ -153,8 +153,10 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui::NewFrame();
 
 	
-	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-
+	
+	if (docking == true) {
+		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+	}
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 	ImGui::ShowDemoWindow();
 	ImGui::Begin("Main Scene", 0, ImGuiWindowFlags_MenuBar);
@@ -168,7 +170,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui::End();
 	
 	ImGui::BeginMenuBar();
-	//ImGui::SameLine(0, -50);
+
 	ImGui::Separator();
 
 	if (ImGui::BeginMainMenuBar()) {
@@ -187,25 +189,62 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 			if (ImGui::MenuItem("Exit"))
 			{
-				//Boton stop
+				//Stop Button
 				return UPDATE_STOP;
 			}
 
 			ImGui::EndMenu();
 		}
-
 		if (ImGui::BeginMenu("Windows"))
 		{
-			/*for (int i = 0; i < (uint)ImWindowID::MAX; i++)
-			{
-				if (ImGui::MenuItem(imWindows[i]->windowName.c_str())) imWindows[i]->isEnabled = true;
-			}*/
+			
 			ImGui::EndMenu();
 		}
 
+		if (pOpen_about)
+		{
+			if (ImGui::BeginMenu("INFO"))
+			{
+				ImGui::SetWindowSize(ImVec2(600.0f, 620.0f));
+
+				//Title
+				ImGui::Text("MM's ENGINE");
+
+				//Description
+				ImGui::Text("An engine attempt made by a student at the Centre de la Imatge i de la Tecnologia Multimedia (CITM)");
+				ImGui::Text("");
+
+				if (ImGui::Button("Docking", ImVec2(100, 20)))
+				{
+					
+					docking = true;
+
+				}
+
+			    //Info about the engine
+				ImGui::Text("License:");
+				ImGui::Text("");
+				ImGui::Text("MIT License");
+				ImGui::Text("");
+				ImGui::Text("Info about the Engine");
+				ImGui::Text("");
+				ImGui::Text("-Code on fbx drag & drop implemented but not functional.");
+				ImGui::Text("-Buttons to open github repository and close the program.");
+				ImGui::Text("-Button to enable docking.");
+				ImGui::EndMenu();
+			}
+
+
+			if (pOpen_about == NULL) aboutVisible = !aboutVisible; // Window is closed so function "MenuAbout()" stops being called
+		}
+		
 		ImGui::PopStyleColor(2);
 
 		ImGui::EndMainMenuBar();
+
+		
+
+		
 
 	}
 

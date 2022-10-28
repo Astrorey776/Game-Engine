@@ -27,5 +27,14 @@ public:
 	mat3x3 NormalMatrix;
 	mat4x4 ModelMatrix, ViewMatrix, ProjectionMatrix;
 
+	bool pOpen_about = true;
+
+	uint framebuffer = 0;
+	uint rbo;
 	unsigned int textColorBuff;
+
+	bool docking = false;
+
+private:
+	bool aboutVisible = false;
 };

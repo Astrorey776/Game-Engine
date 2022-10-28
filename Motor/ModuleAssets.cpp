@@ -44,7 +44,18 @@ bool ModuleAssets::Init()
 		{
 			LoadFile(existent_filedir);
 		}
-		
+		else if (existent_filedir != nullptr && extension == ".png")
+		{
+
+			//LoadTexture(existent_filedir);
+
+			
+		}
+		else
+		{
+			
+
+		}
 
 	}
 
@@ -87,14 +98,18 @@ update_status ModuleAssets::Update(float dt)
 			{
 				LoadFile(new_filedir);
 			}
+			else if (extension == ".png" && new_filedir != nullptr);
+
+			
 
 		}
-						   SDL_free(dropped_filedir);    // Free dropped_filedir memory
+		    SDL_free(dropped_filedir);    // Free dropped_filedir memory
 
 						   break;
 		}
 
 	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -224,10 +239,6 @@ void MeshData::DrawMesh()
 	glDrawElements(GL_TRIANGLES, num_index, GL_UNSIGNED_INT, NULL);
 
 	glPopMatrix();
-
-	// ----------------------------------------------------------------------- UnBind Buffers
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisable(GL_TEXTURE_COORD_ARRAY);
 }
 
 void ModuleAssets::LoadMeshData(MeshData* mesh)
