@@ -5,7 +5,7 @@
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_opengl3.h"
 #include "ImGui/imgui_impl_sdl.h"
-#include "glew.h"
+#include "Glew/include/glew.h" 
 
 bool show_demo_window = true;
 bool show_another_window = false;
